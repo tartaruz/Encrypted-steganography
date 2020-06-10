@@ -1,5 +1,5 @@
 var Jimp = require('jimp');
-let identifier = "*#-#*"
+let identifier = "*_*";
 
 getValues = (p) =>{ return (p[p.length-25]+p[p.length-17]+p[p.length-9]+p[p.length-1])}
 
@@ -10,7 +10,7 @@ cutArray= (arrayLSB) =>{
 
 readHiddenCode=()=>{
   let data = [];
-  Jimp.read('s.png', (err, img) => {
+  Jimp.read('codeIMG.png', (err, img) => {
     if (err) throw err;
     for (let x = 0; x<=img.getWidth() ;x++){
       for (let y = 0; y<=img.getHeight() ;y++){ 
@@ -25,6 +25,7 @@ readHiddenCode=()=>{
     console.log(cutArray(fick))
 })
 }
+
 
 readHiddenCode()
 //console.log(LSBArray);

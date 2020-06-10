@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html class="js_active vc_desktop vc_transform gr__teamviewer_com" lang="nb-NO"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script async="" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/gtm.js"></script><script>dataLayer = [{"country":"NO"},{"realCountry":"NOR"},{"cusDimIndex": 4,"cusDimValue":"New Design Wordpress"},{"os":"linux"}];</script><style>.async-hide{opacity:0!important}</style>
+<script>
+    function writeExpCookie() {
+      var urlParam = document.location.search;
+      var paramSplit = urlParam.split("&");
+      var _gaexp = getParameter("_gaexpadserver", window.location.href);
+      for (var i = 0; i < paramSplit.length; i++) {
+        if (paramSplit[i].indexOf("_gaexpadserver") > -1 && _gaexp !== "noexp") {
+          createCookie("_gaexp", _gaexp, 90);
+        }
+      }
+    }
+    
+    function getParameter(name, url) {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, "$&");
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return "";
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+    
+    function createCookie(name, value, days) {
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+        var expires = "; expires=" + date.toGMTString();
+      } else var expires = "";
+      document.cookie = name + "=" + value + expires + "; path=/";
+    }
+    
+    if (checkConsent() === true) {
+      (function(a, s, y, n, c, h, i, d, e) {
+        s.className += " " + y;
+        h.start = 1 * new Date();
+        h.end = i = function() {
+          s.className = s.className.replace(RegExp(" ?" + y), "");
+        };
+        (a[n] = a[n] || []).hide = h;
+        setTimeout(function() {
+          i();
+          h.end = null;
+        }, c);
+        h.timeout = c;
+      })(window, document.documentElement, "async-hide", "dataLayer", 4000, {
+        "GTM-PJJXWCQ": true
+      });
+    
+      (function(i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        (i[r] =
+          i[r] ||
+          function() {
+            (i[r].q = i[r].q || []).push(arguments);
+          }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        "script",
+        "https://www.google-analytics.com/analytics.js",
+        "ga"
+      );
+      ga("create", "UA-32025289-1", "auto", {
+        siteSpeedSampleRate: 100,
+        allowLinker: true,
+        clientId: trakkGetClientIDfromURL().returnClientID() //New
+      });
+      ga("require", "GTM-PJJXWCQ");
+    }
+    
+    trakkGetClientIDfromURL().returnClientID();
+    
+    //get customized client id
+    function trakkGetClientIDfromURL() {
+      var gaClientidParameterKey = "gaclientid";
+      var clickTimestampParameterKey = "gaclientidtime";
+      var dataLayerEventName = "gaClientIDreceived";
+      return {
+        returnClientID: returnClientID
+      };
+    
+      function returnClientID() {
+        var clientID = getClientIdFromURL();
+        var clickTimestamp = getClientIdTimeStamp() || 0;
+        var currentTimeStamp = Date.now() / 1000;
+    
+        if (currentTimeStamp - clickTimestamp > 60) {
+          clientID = undefined;
+        }
+        pushClientIDtoDataLayer(clientID);
+        return clientID;
+      }
+    
+      function pushClientIDtoDataLayer(clientID) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: dataLayerEventName,
+          clientID: clientID
+        });
+      }
+    
+      function getClientIdFromURL() {
+        var urlParam = window.location.search.substring(1);
+        var paramSplit = urlParam.split("&");
+    
+        for (var i = 0; i < paramSplit.length; i++) {
+          if (paramSplit[i].indexOf("gaclientid") > -1) {
+            var clientId = paramSplit[i].split("=")[1];
+            return clientId;
+          }
+        }
+      }
+    
+      function getClientIdTimeStamp() {
+        var urlParam = document.location.search;
+        var paramSplit = urlParam.split("&");
+        for (var i = 0; i < paramSplit.length; i++) {
+          if (paramSplit[i].indexOf("gaclientidtime") > -1) {
+            var clientIdTimestamp = paramSplit[i].split("=")[1];
+            return clientIdTimestamp;
+          }
+        }
+      }
+    }
+    
+    (function(w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-T9RD3NN");
+    
+    //read cookie
+    function readCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(";");
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == " ") c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+    }
+    
+    //check if tracking consent
+    function checkConsent() {
+      var consentCookie = readCookie("OptanonConsent");
+      var decoded = decodeURIComponent(consentCookie);
+      if (decoded.indexOf(",2:1,") != -1) {
+        return true;
+      }
+    }    
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="msapplication-config" content="none">
+<meta name="applicable-device" content="pc,mobile">
+<meta name="baidu-site-verification" content="wNWFRErSiK">
+<meta name="naver-site-verification" content="8763ea8ce003ca44fa69953b349ae070117703b0">
+<meta name="theme-color" content="#2b76ad">
+<link rel="apple-touch-icon" href="https://www.teamviewer.com/wp-content/themes/tv-wordpress-theme/dist/media/favicon.png">
+<link rel="icon" type="image/png" href="https://www.teamviewer.com/wp-content/themes/tv-wordpress-theme/dist/media/favicon.png">
+<link rel="dns-prefetch" href="https://static.teamviewer.com/"><link rel="dns-prefetch" href="https://cdn.cookielaw.org/"><link rel="dns-prefetch" href="https://www.googletagmanager.com/"><link rel="dns-prefetch" href="https://www.google-analytics.com/"><title>TeamViewer Linux-nedlasting for ekstern skrivebordstilgang og samarbeid</title>
+<style type="text/css" id="wpml-ls-inline-styles-additional-css">.wpml-ls-display{display:inline!important;}</style>
+<link rel="alternate" hreflang="cs" href="https://www.teamviewer.com/cs/stahnout/linux/">
+<link rel="alternate" hreflang="da" href="https://www.teamviewer.com/da/download/linux/">
+<link rel="alternate" hreflang="en" href="https://www.teamviewer.com/en/download/linux/">
+<link rel="alternate" hreflang="es" href="https://www.teamviewer.com/es/descarga/linux/">
+<link rel="alternate" hreflang="es-mx" href="https://www.teamviewer.com/es-mx/descarga/linux/">
+<link rel="alternate" hreflang="en-us" href="https://www.teamviewer.com/en-us/download/linux/">
+<link rel="alternate" hreflang="fi" href="https://www.teamviewer.com/fi/lataa/linux/">
+<link rel="alternate" hreflang="fr" href="https://www.teamviewer.com/fr/telecharger/linux/">
+<link rel="alternate" hreflang="fr-ca" href="https://www.teamviewer.com/fr-ca/telecharger/linux/">
+<link rel="alternate" hreflang="de" href="https://www.teamviewer.com/de/download/linux/">
+<link rel="alternate" hreflang="hu" href="https://www.teamviewer.com/hu/letoltes/linux/">
+<link rel="alternate" hreflang="it" href="https://www.teamviewer.com/it/download/linux/">
+<link rel="alternate" hreflang="ja" href="https://www.teamviewer.com/ja/download/linux/">
+<link rel="alternate" hreflang="ko" href="https://www.teamviewer.com/ko/download/linux/">
+<link rel="alternate" hreflang="nl" href="https://www.teamviewer.com/nl/download/linux/">
+<link rel="alternate" hreflang="no" href="https://www.teamviewer.com/no/nedlasting/linux/">
+<link rel="alternate" hreflang="pl" href="https://www.teamviewer.com/pl/do-pobrania/linux/">
+<link rel="alternate" hreflang="pt-br" href="https://www.teamviewer.com/pt-br/download/linux/">
+<link rel="alternate" hreflang="ru" href="https://www.teamviewer.com/ru/%d1%81%d0%ba%d0%b0%d1%87%d0%b0%d1%82%d1%8c/linux/">
+<link rel="alternate" hreflang="sv" href="https://www.teamviewer.com/sv/ladda-ner/linux/">
+<link rel="alternate" hreflang="th" href="https://www.teamviewer.com/th/%e0%b8%94%e0%b8%b2%e0%b8%a7%e0%b8%99%e0%b9%8c%e0%b9%82%e0%b8%ab%e0%b8%a5%e0%b8%94/linux/">
+<link rel="alternate" hreflang="tr" href="https://www.teamviewer.com/tr/yukleme/linux/">
+<link rel="alternate" hreflang="vi" href="https://www.teamviewer.com/vi/ta%cc%89i-ve/linux/">
+<link rel="alternate" hreflang="zh-cn" href="https://www.teamviewer.cn/cn/download/linux/">
+<link rel="alternate" hreflang="zh-tw" href="https://www.teamviewer.com/tw/download/linux/">
+<meta name="description" content="Last ned TeamViewer nå for å koble til eksterne skrivebord, levere ekstern støtte og samarbeide med nettmøter og videokonferanser.">
+<link rel="canonical" href="https://www.teamviewer.com/no/nedlasting/linux/">
+<meta property="og:locale" content="nb_NO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TeamViewer Linux-nedlasting for ekstern skrivebordstilgang og samarbeid">
+<meta property="og:description" content="Last ned TeamViewer nå for å koble til eksterne skrivebord, levere ekstern støtte og samarbeide med nettmøter og videokonferanser.">
+<meta property="og:url" content="https://www.teamviewer.com/no/nedlasting/linux/">
+<meta property="og:site_name" content="TeamViewer">
+<meta property="og:image" content="https://static.teamviewer.com/resources/2018/12/Facebook_v1.png">
+<meta property="og:image:secure_url" content="https://static.teamviewer.com/resources/2018/12/Facebook_v1.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="Last ned TeamViewer nå for å koble til eksterne skrivebord, levere ekstern støtte og samarbeide med nettmøter og videokonferanser.">
+<meta name="twitter:title" content="TeamViewer Linux-nedlasting for ekstern skrivebordstilgang og samarbeid">
+<meta name="twitter:image" content="https://static.teamviewer.com/resources/2018/12/Facebook_v1.png">
+<script type="application/ld+json" class="yoast-schema-graph yoast-schema-graph--main">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.teamviewer.com/no/#organization","name":"TeamViewer","url":"https://www.teamviewer.com/no/","sameAs":[],"logo":{"@type":"ImageObject","@id":"https://www.teamviewer.com/no/#logo","url":"https://static.teamviewer.com/resources/2019/07/TeamViewer_Logo_512x512.png","width":512,"height":512,"caption":"TeamViewer"},"image":{"@id":"https://www.teamviewer.com/no/#logo"}},{"@type":"WebSite","@id":"https://www.teamviewer.com/no/#website","url":"https://www.teamviewer.com/no/","name":"TeamViewer","publisher":{"@id":"https://www.teamviewer.com/no/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://www.teamviewer.com/no/?s={search_term_string}","query-input":"required name=search_term_string"}},{"url":"https://static.teamviewer.com/resources/2018/12/Facebook_v1.png"},{"@type":"WebPage","@id":"https://www.teamviewer.com/no/nedlasting/linux/#webpage","url":"https://www.teamviewer.com/no/nedlasting/linux/","inLanguage":"nb-NO","name":"TeamViewer Linux-nedlasting for ekstern skrivebordstilgang og samarbeid","isPartOf":{"@id":"https://www.teamviewer.com/no/#website"},"datePublished":"2018-10-18T06:39:52+02:00","dateModified":"2020-03-31T13:11:40+02:00","description":"Last ned TeamViewer n\u00e5 for \u00e5 koble til eksterne skrivebord, levere ekstern st\u00f8tte og samarbeide med nettm\u00f8ter og videokonferanser."}]}</script>
+<link rel="stylesheet" id="wp-components-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/style_002.css" type="text/css" media="all">
+<link rel="stylesheet" id="wpml-tm-admin-bar-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/admin-bar-style.css" type="text/css" media="all">
+<link rel="stylesheet" id="tv-theme-global-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/global.css" type="text/css" media="all">
+<link rel="stylesheet" id="tv-theme-default-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/tvdefault.css" type="text/css" media="all">
+<link rel="stylesheet" id="js_composer_front-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/js_composer.css" type="text/css" media="all">
+<link rel="stylesheet" id="bsf-Defaults-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/Defaults.css" type="text/css" media="all">
+<link rel="stylesheet" id="bsf-Marketing-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/Marketing.css" type="text/css" media="all">
+<link rel="stylesheet" id="bsf-Delivery-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/Delivery.css" type="text/css" media="all">
+<link rel="stylesheet" id="bsf-Interaction-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/Interaction.css" type="text/css" media="all">
+<link rel="stylesheet" id="bsf-Arrows-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/Arrows.css" type="text/css" media="all">
+<link rel="stylesheet" id="bsf-Business-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/Business.css" type="text/css" media="all">
+<link rel="stylesheet" id="bsf-Technology-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/Technology.css" type="text/css" media="all">
+<link rel="stylesheet" id="bsf-Webdev-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/Webdev.css" type="text/css" media="all">
+<link rel="stylesheet" id="bsf-Office-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/Office.css" type="text/css" media="all">
+<link rel="stylesheet" id="bsf-Security-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/Security.css" type="text/css" media="all">
+<link rel="stylesheet" id="bsf-Essentials-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/Essentials.css" type="text/css" media="all">
+<link rel="stylesheet" id="ultimate-style-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="ult-slick-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/slick.css" type="text/css" media="all">
+<link rel="stylesheet" id="ult-icons-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/icons.css" type="text/css" media="all">
+<link rel="stylesheet" id="ultimate-animate-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/animate.css" type="text/css" media="all">
+<link rel="stylesheet" id="info-box-style-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/info-box.css" type="text/css" media="all">
+<script type="text/javascript" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/jquery.js"></script>
+<script type="text/javascript" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/jquery-migrate.js"></script>
+<script type="text/javascript" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/ultimate-params.js"></script>
+<script type="text/javascript" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/jquery-appear.js"></script>
+<script type="text/javascript" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/custom.js"></script>
+<script type="text/javascript" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/slick.js"></script>
+<script type="text/javascript" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/slick-custom.js"></script>
+<style>
+::-webkit-input-placeholder { 
+color: #777 !important;
+opacity: 1 !important;
+}
+::-moz-placeholder { 
+color: #777 !important;
+opacity: 1 !important;
+}
+:-ms-input-placeholder {
+color: #777 !important;
+opacity: 1;
+}
+ul.phone_number_list { list-style-type: none; padding-left: 0px !important; } 
+ul.phone_number_list li { margin-bottom: 0px !important; }
+.wd-row.wd-row--highlight ul li { color: #fff; }
+</style>
+<noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript>
+<style>/** Ultimate: Media Responsive **/ @media (max-width: 1199px) { }@media (max-width: 991px)  { }@media (max-width: 767px)  { }@media (max-width: 479px)  { }/** Ultimate: Media Responsive - **/</style><style>#ult-carousel-19018046815ed74e29c1144 .slick-slide { margin:0 15px; } </style></head>
+<body class="page-template-default page page-id-32929 page-child parent-pageid-25311 wpb-js-composer js-comp-ver-6.1 vc_responsive" data-gr-c-s-loaded="true" style="overflow: visible;">
+<noscript>
+		
+		<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9RD3NN" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+		<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=57080&fmt=gif" />
+	</noscript>
+<div id="page" class="site">
+<header class="wd-site-header" id="tv-main-header">
+<a href="#tv-main-header" id="mobile_toggle_open" class="mobile_toggle" aria-label="Open or close the mobile menu"></a>
+<a href="#" id="main_mobile_toggle_close" class="mobile_toggle"></a>
+<div class="site-branding">
+<div class="wd-tv-logo">
+<a href="https://www.teamviewer.com/no/">
+<img src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/logo-teamviewer.svg" alt="TeamViewer Logo" title="TeamViewer Logo">
+</a>
+</div>
+</div>
+<div class="wd-tv-top-navigation" id="tv-search-box">
+<nav id="site-navigation">
+<div class="wd-tv-container-menu">
+<ul id="tv-top-menu" class="tv-top-menu mobile_menu"><li id="menu-item-185265" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-185265"><a>Produkter</a>
+<ul class="sub-menu wd-open-sub-menu">
+<li id="menu-item-185302" class="wd-headline-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-185302"><a>Produkter</a>
+<ul class="sub-menu column-sub-menu two-column-sub-menu">
+<li id="menu-item-185303" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185303 column-sub-menu-li"><a href="https://www.teamviewer.com/no/produkter/teamviewer/">TeamViewer<div class="menu-item-description">Remote Access og støtte</div></a></li>
+<li id="menu-item-188993" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-188993 column-sub-menu-li"><a href="https://www.teamviewer.com/en/teamviewer-tensor/">TeamViewer Tensor<div class="menu-item-description">Ekstern bedriftstilkobling</div></a></li>
+<li id="menu-item-233741" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-233741 column-sub-menu-li"><a href="https://www.teamviewer.com/en/iot/">TeamViewer IoT<div class="menu-item-description">Koble til, overvåk, driv</div></a></li>
+<li id="menu-item-185368" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185368 column-sub-menu-li"><a href="https://www.teamviewer.com/no/losninger/utvidet-virkelighet/">TeamViewer Pilot<div class="menu-item-description">Ekstern støtte med AR</div></a></li>
+<li id="menu-item-185369" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185369 column-sub-menu-li"><a href="https://www.teamviewer.com/no/remote-management/">TeamViewer Remote Management<div class="menu-item-description">Administrer, overvåk, reparer og beskytt enhetene dine</div></a></li>
+<li id="menu-item-232001" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-232001 column-sub-menu-li"><a href="https://www.teamviewer.com/en/solutions/support-ticket-system/">TeamViewer Servicecamp<div class="menu-item-description">Service desk-billettsystem</div></a></li>
+<li id="menu-item-185422" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-185422 column-sub-menu-li"><a target="_blank" rel="noopener noreferrer" href="https://www.blizz.com/no/">Blizz<div class="menu-item-description">Globalt samarbeid</div></a></li>
+</ul>
+</li>
+<li id="menu-item-185468" class="wd-headline-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-185468"><a>mer</a>
+<ul class="sub-menu">
+<li id="menu-item-188994" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-188994"><a href="https://www.teamviewer.com/en/success-stories/">Suksesshistorier</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-185526" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-185526"><a>Løsninger</a>
+<ul class="sub-menu wd-open-sub-menu">
+<li id="menu-item-185527" class="wd-headline-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-185527"><a>Løsninger</a>
+<ul class="sub-menu column-sub-menu three-column-sub-menu">
+<li id="menu-item-185622" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185622 three-column-sub-menu-li"><a href="https://www.teamviewer.com/no/losninger/ekstern-stotte/">Ekstern støtte</a></li>
+<li id="menu-item-185623" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185623 three-column-sub-menu-li"><a href="https://www.teamviewer.com/no/losninger/ekstern-tilgang/">Ekstern tilgang</a></li>
+<li id="menu-item-185664" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185664 three-column-sub-menu-li"><a href="https://www.teamviewer.com/no/losninger/eksternt-skrivebord/">Eksternt skrivebord</a></li>
+<li id="menu-item-185665" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185665 three-column-sub-menu-li"><a href="https://www.teamviewer.com/no/losninger/stotte-for-mobile-enheter/">Støtte for mobile enheter</a></li>
+<li id="menu-item-185710" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185710 three-column-sub-menu-li"><a href="https://www.teamviewer.com/no/losninger/samarbeid/">Samarbeid</a></li>
+<li id="menu-item-185711" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185711 three-column-sub-menu-li"><a href="https://www.teamviewer.com/no/remote-management/">Remote Management</a></li>
+<li id="menu-item-185770" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185770 three-column-sub-menu-li"><a href="https://www.teamviewer.com/no/losninger/utvidet-virkelighet/">Utvidet virkelighet</a></li>
+<li id="menu-item-185786" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-185786 three-column-sub-menu-li"><a href="https://www.blizz.com/no/">Nettmøter</a></li>
+<li id="menu-item-193128" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-193128 three-column-sub-menu-li"><a href="https://www.teamviewer.com/en/teamviewer-tensor/">For bedrifter</a></li>
+<li id="menu-item-233742" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-233742 three-column-sub-menu-li"><a href="https://www.teamviewer.com/en/iot/">Internet of Things</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-185787" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-185787"><a>Ressurser</a>
+<ul class="sub-menu wd-open-sub-menu">
+<li id="menu-item-185831" class="wd-headline-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-185831"><a href="#">Ressurser</a>
+<ul class="sub-menu column-sub-menu three-column-sub-menu">
+<li id="menu-item-185832" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-185832 three-column-sub-menu-li"><a href="https://community.teamviewer.com/?category.id=en">Fellesskap</a></li>
+<li id="menu-item-185923" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-185923 three-column-sub-menu-li"><a href="https://community.teamviewer.com/t5/Knowledge-Base/tkb-p/Knowledgebase?_ga=2.12813815.1503713766.1563778129-797906566.1562684420">Kunnskapsbase</a></li>
+<li id="menu-item-254452" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-254452 three-column-sub-menu-li"><a href="https://www.teamviewer.com/no/support/">Send inn en billett</a></li>
+<li id="menu-item-185973" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-185973 three-column-sub-menu-li"><a href="https://status.teamviewer.com/">Systemstatus</a></li>
+<li id="menu-item-186016" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-186016 three-column-sub-menu-li"><a href="https://www.teamviewer.com/en/trust-center/">Trust Center</a></li>
+<li id="menu-item-189000" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-189000 three-column-sub-menu-li"><a href="https://www.teamviewer.com/en/custom-modules/">Egendefinerte moduler</a></li>
+<li id="menu-item-188996" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-188996 three-column-sub-menu-li"><a href="https://www.teamviewer.com/en/for-developers/">For utviklere</a></li>
+<li id="menu-item-188995" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-188995 three-column-sub-menu-li"><a href="https://www.teamviewer.com/en/documents/">Dokumenter</a></li>
+<li id="menu-item-188997" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-188997 three-column-sub-menu-li"><a href="https://www.teamviewer.com/en/product-training/">TeamViewer Academy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-186314" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-186314"><a>Bedrift</a>
+<ul class="sub-menu wd-open-sub-menu">
+<li id="menu-item-186017" class="wd-headline-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-186017"><a>Om oss</a>
+<ul class="sub-menu">
+<li id="menu-item-186073" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-186073"><a href="https://ir.teamviewer.com/websites/teamviewer/English/1/investor-relations.html">Investorer</a></li>
+<li id="menu-item-188433" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-188433"><a href="https://www.teamviewer.com/no/company/">Om TeamViewer</a></li>
+</ul>
+</li>
+<li id="menu-item-186176" class="wd-headline-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-186176"><a>mer</a>
+<ul class="sub-menu">
+<li id="menu-item-186177" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-186177"><a href="https://jobs.teamviewer.com/">Karriere</a></li>
+<li id="menu-item-188455" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-188455"><a href="https://www.teamviewer.com/no/support/">Støtte</a></li>
+<li id="menu-item-186227" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-186227"><a href="https://www.teamviewer.com/no/support/contact/">Kontakt oss</a></li>
+<li id="menu-item-191433" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-191433"><a href="https://www.teamviewer.com/en/company/press/">Presse</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-188999" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-188999"><a href="https://www.teamviewer.com/en/integrations/">Integrasjoner</a></li>
+<li id="menu-item-200883" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-200883"><a>Partner</a>
+<ul class="sub-menu wd-open-sub-menu">
+<li id="menu-item-186081" class="wd-headline-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-186081"><a>Partner</a>
+<ul class="sub-menu">
+<li id="menu-item-186082" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-186082"><a href="https://www.teamviewer.com/en/partner-locations/">Finn en partner</a></li>
+<li id="menu-item-264282" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-264282"><a href="https://www.teamviewer.com/en/become-a-partner/">Become a Partner</a></li>
+<li id="menu-item-264281" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-264281"><a href="https://www.teamviewer.com/en/existing-partner-login/">Existing partner login</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-186252" class="wd-button wd-button--highlight-inverted__intensive wd-margin-bottom-zero menu-item-download wd-menu-item--download menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-186252"><a href="https://www.teamviewer.com/no/nedlasting/">Nedlasting</a></li>
+<li id="menu-item-186253" class="wd-button wd-button--highlight-inverted__intensive wd-margin-bottom-zero menu-item-buy-now wd-menu-item--buy-now menu-item menu-item-type-custom menu-item-object-custom menu-item-186253"><a href="https://www.teamviewer.com/no/kjop-na/">Kjøp nå</a></li>
+</ul> </div>
+</nav>
+<div class="wd-site-search">
+<form method="get" class="wd-search-bar wd-search-bar--menu" action="/no/">
+<span class="wd-search-bar__wrapper">
+<input type="text" id="tv-search-field" class="wd-search-bar__field" name="s">
+<button type="submit" class="wd-search-bar__button"><i class="wd-search-bar__icon fal fa-search"></i></button>
+</span>
+<a href="#" class="wd-search-bar__cancel">Cancel</a>
+</form> </div>
+</div>
+<div class="wd-tv-support-navigation">
+<ul class="menu-buttons">
+<li>
+<a href="#tv-search-box" id="tv_search_icon" aria-label="Søk"><span class="wd-top-menu-icons tv_search_icon"></span></a>
+</li>
+<li>
+<a href="https://login.teamviewer.com/LogOn" target="_blank" id="tv_login_icon" rel="noopener" aria-label="TeamViewer Login Page">
+<span class="wd-top-menu-icons tv_profile_icon"></span>
+</a>
+</li>
+<li class="wd-tv-support-navigation__new-line">
+<a href="https://www.teamviewer.com/support/contact/" aria-label="TeamViewer Contact Page">
+<span class="wd-top-menu-icons wd-top-menu-icons--plus-text tv_phone_icon"></span>
+<span class="wd-tv-support-navigation__icon-text">
++47 21 931 933 </span>
+</a>
+</li>
+</ul>
+</div>
+</header>
+<div id="content" class="wd-site-content">
+<div id="primary" class="content-area">
+<main id="main" class="site-main">
+<article id="post-32929" class="post-32929 page type-page status-publish hentry">
+<div class="entry-content">
+<div data-vc-full-width="true" data-vc-full-width-init="true" class="vc_row wpb_row vc_row-fluid wd-row wd-row--highlight wd-row--highlight-transparent ult-vc-hide-row vc_row-has-fill" style="position: relative; left: 15px; box-sizing: border-box; width: 917px; padding-left: 0px; padding-right: 0px;" data-rtl="false" data-row-effect-mobile-disable="true"><div class="upb_row_bg" data-bg-override="0" style="min-width: 917px; left: 0px; width: 915.3px;"></div><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper"><div id="ult-carousel-19018046815ed74e29c1144" class="ult-carousel-wrapper  wd-nav-slider wd-margin-bottom-zero ult_horizontal" data-gutter="15" data-rtl="false"><div class="ult-carousel-5329043695ed74e29c105e slick-initialized slick-slider"><button type="button" role="button" aria-label="Previous" style="color: rgb(51, 51, 51); font-size: 20px; display: block;" class="slick-prev default slick-arrow slick-disabled" aria-disabled="true"><i class="ultsl-arrow-left6"></i></button><div aria-live="polite" class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 1113px; transform: translate3d(0px, 0px, 0px);" role="listbox"><div class="ult-item-wrap slick-slide slick-current slick-active animated no-animation" data-animation="animated no-animation" style="width: 129px;" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00"><div class="aio-icon-component   wd-nav-slider--icon style_3"><a class="aio-icon-box-link" href="https://www.teamviewer.com/no/nedlasting/windows/" title="Download Windows" tabindex="0"><div id="Info-box-wrap-5620" class="aio-icon-box top-icon" style=""><div class="aio-icon-top"><div class="ult-item-wrap" data-animation="animated no-animation"><div class="ult-just-icon-wrapper  "><div class="align-icon" style="text-align:center;">
+<div class="aio-icon-img " style="font-size:62px;display:inline-block;">
+<img class="img-icon" alt="null" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/monitor-windows-e1531916994596.png">
+</div></div></div></div></div><div class="aio-icon-header"><div class="aio-icon-title ult-responsive" data-ultimate-target="#Info-box-wrap-5620 .aio-icon-title" data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}" style="color:#000000;">Windows</div></div> </div> </a></div> </div><div class="ult-item-wrap slick-slide slick-active animated no-animation" data-animation="animated no-animation" style="width: 129px;" data-slick-index="1" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide01"><div class="aio-icon-component   wd-nav-slider--icon style_3"><a class="aio-icon-box-link" href="https://www.teamviewer.com/no/nedlasting/mac-os/" title="Download Mac OS" tabindex="0"><div id="Info-box-wrap-9106" class="aio-icon-box top-icon" style=""><div class="aio-icon-top"><div class="ult-item-wrap" data-animation="animated no-animation"><div class="ult-just-icon-wrapper  "><div class="align-icon" style="text-align:center;">
+<div class="aio-icon-img " style="font-size:62px;display:inline-block;">
+<img class="img-icon" alt="null" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/monitor-mac.png">
+</div></div></div></div></div><div class="aio-icon-header"><span class="aio-icon-title ult-responsive" data-ultimate-target="#Info-box-wrap-9106 .aio-icon-title" data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}" style="color:#000000;">Mac</span></div> </div> </a></div> </div><div class="ult-item-wrap slick-slide slick-active animated no-animation" data-animation="animated no-animation" style="width: 129px;" data-slick-index="2" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide02"><div class="aio-icon-component   wd-nav-slider--icon style_1"><a class="aio-icon-box-link" href="https://www.teamviewer.com/no/nedlasting/linux/" title="Download Linux" tabindex="0"><div id="Info-box-wrap-8416" class="aio-icon-box top-icon" style=""><div class="aio-icon-top"><div class="ult-item-wrap" data-animation="animated no-animation"><div class="ult-just-icon-wrapper  "><div class="align-icon" style="text-align:center;">
+<div class="aio-icon-img  animated swing delay-03" style="font-size:62px;display:inline-block;" data-animation="swing" data-animation-delay="03">
+<img class="img-icon" alt="null" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/monitor-linux.png">
+</div></div></div></div></div><div class="aio-icon-header"><span class="aio-icon-title ult-responsive" data-ultimate-target="#Info-box-wrap-8416 .aio-icon-title" data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}" style="color:#1d85a7;">Linux</span></div> </div> </a></div> </div><div class="ult-item-wrap slick-slide slick-active animated no-animation" data-animation="animated no-animation" style="width: 129px;" data-slick-index="3" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide03"><div class="aio-icon-component   wd-nav-slider--icon style_3"><a class="aio-icon-box-link" href="https://www.teamviewer.com/no/nedlasting/chrome-os/" title="Download Chrome OS" tabindex="0"><div id="Info-box-wrap-4980" class="aio-icon-box top-icon" style=""><div class="aio-icon-top"><div class="ult-item-wrap" data-animation="animated no-animation"><div class="ult-just-icon-wrapper  "><div class="align-icon" style="text-align:center;">
+<div class="aio-icon-img " style="font-size:62px;display:inline-block;">
+<img class="img-icon" alt="null" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/monitor-chromeos.png">
+</div></div></div></div></div><div class="aio-icon-header"><span class="aio-icon-title ult-responsive" data-ultimate-target="#Info-box-wrap-4980 .aio-icon-title" data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}" style="color:#000000;">Chrome OS</span></div> </div> </a></div> </div><div class="ult-item-wrap slick-slide slick-active animated no-animation" data-animation="animated no-animation" style="width: 129px;" data-slick-index="4" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide04"><div class="aio-icon-component   wd-nav-slider--icon style_3"><a class="aio-icon-box-link" href="https://www.teamviewer.com/no/nedlasting/raspberry-pi/" title="Download Raspberry Pi" tabindex="0"><div id="Info-box-wrap-6533" class="aio-icon-box top-icon" style=""><div class="aio-icon-top"><div class="ult-item-wrap" data-animation="animated no-animation"><div class="ult-just-icon-wrapper  "><div class="align-icon" style="text-align:center;">
+<div class="aio-icon-img " style="font-size:62px;display:inline-block;">
+<img class="img-icon" alt="null" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/monitor-raspberry-pi.png">
+</div></div></div></div></div><div class="aio-icon-header"><span class="aio-icon-title ult-responsive" data-ultimate-target="#Info-box-wrap-6533 .aio-icon-title" data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}" style="color:#000000;">Raspberry Pi</span></div> </div> </a></div> </div><div class="ult-item-wrap slick-slide" data-animation="animated no-animation" style="width: 129px;" data-slick-index="5" aria-hidden="true" tabindex="-1" role="option" aria-describedby="slick-slide05"><div class="aio-icon-component   wd-nav-slider--icon style_3"><a class="aio-icon-box-link" href="https://www.teamviewer.com/no/nedlasting/android/" title="Download Android" tabindex="-1"><div id="Info-box-wrap-7987" class="aio-icon-box top-icon" style=""><div class="aio-icon-top"><div class="ult-item-wrap" data-animation="animated no-animation"><div class="ult-just-icon-wrapper  "><div class="align-icon" style="text-align:center;">
+<div class="aio-icon-img " style="font-size:34px;display:inline-block;">
+<img class="img-icon" alt="null" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/device-android.png">
+</div></div></div></div></div><div class="aio-icon-header"><span class="aio-icon-title ult-responsive" data-ultimate-target="#Info-box-wrap-7987 .aio-icon-title" data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}" style="color:#000000;">Android</span></div> </div> </a></div> </div><div class="ult-item-wrap slick-slide" data-animation="animated no-animation" style="width: 129px;" data-slick-index="6" aria-hidden="true" tabindex="-1" role="option" aria-describedby="slick-slide06"><div class="aio-icon-component   wd-nav-slider--icon style_3"><a class="aio-icon-box-link" href="https://www.teamviewer.com/no/nedlasting/ios/" title="Download iOS" tabindex="-1"><div id="Info-box-wrap-6577" class="aio-icon-box top-icon" style=""><div class="aio-icon-top"><div class="ult-item-wrap" data-animation="animated no-animation"><div class="ult-just-icon-wrapper  "><div class="align-icon" style="text-align:center;">
+<div class="aio-icon-img " style="font-size:34px;display:inline-block;">
+<img class="img-icon" alt="null" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/device-ios.png">
+</div></div></div></div></div><div class="aio-icon-header"><span class="aio-icon-title ult-responsive" data-ultimate-target="#Info-box-wrap-6577 .aio-icon-title" data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}" style="color:#000000;">iOS</span></div> </div> </a></div> </div></div></div><button type="button" role="button" aria-label="Next" style="color: rgb(51, 51, 51); font-size: 20px; display: block;" class="slick-next default slick-arrow" aria-disabled="false"><i class="ultsl-arrow-right6"></i></button></div></div> <script type="text/javascript">
+				jQuery(document).ready(function ($) {
+					if( typeof jQuery('.ult-carousel-5329043695ed74e29c105e').slick == "function"){
+						$('.ult-carousel-5329043695ed74e29c105e').slick({dots: false,autoplaySpeed: 5000,speed: 300,infinite: false,arrows: true,nextArrow: '<button type="button" role="button" aria-label="Next" style="color:#333333; font-size:20px;" class="slick-next default"><i class="ultsl-arrow-right6"></i></button>',prevArrow: '<button type="button" role="button" aria-label="Previous" style="color:#333333; font-size:20px;" class="slick-prev default"><i class="ultsl-arrow-left6"></i></button>',slidesToScroll:7,slidesToShow:7,swipe: true,draggable: true,touchMove: true,pauseOnHover: true,pauseOnFocus: false,responsive: [
+							{
+							  breakpoint: 1026,
+							  settings: {
+								slidesToShow: 7,
+								slidesToScroll: 7,  
+							  }
+							},
+							{
+							  breakpoint: 1025,
+							  settings: {
+								slidesToShow: 5,
+								slidesToScroll: 5
+							  }
+							},
+							{
+							  breakpoint: 760,
+							  settings: {
+								slidesToShow: 3,
+								slidesToScroll: 3
+							  }
+							}
+						],pauseOnDotsHover: true,customPaging: function(slider, i) {
+                   return '<i type="button" style= "color:#333333;" class="ultsl-record" data-role="none"></i>';
+                },});
+					}
+				});
+			</script>
+</div></div></div></div><div class="vc_row-full-width vc_clearfix"></div><div class="vc_row wpb_row vc_row-fluid wd-row"><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner"><div class="wpb_wrapper">
+<div class="wpb_text_column wpb_content_element ">
+<div class="wpb_wrapper">
+<h2>TeamViewer for Linux</h2>
+<ul class="wd-list">
+<li>Establish incoming and outgoing connections between devices</li>
+<li>Real-time remote access and support</li>
+<li>Start using TeamViewer for free immediately after downloading</li>
+</ul>
+</div>
+</div>
+<div class="wpb_text_column wpb_content_element  wd-margin-bottom-zero">
+<div class="wpb_wrapper">
+<p><strong>Ubuntu, Debian</strong></p>
+</div>
+</div>
+<div class="vc_row wpb_row vc_inner vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner"><div class="wpb_wrapper">
+<div class="wpb_text_column wpb_content_element ">
+<div class="wpb_wrapper">
+<p>*.deb package 15.6.7<br>
+<a href="https://download.teamviewer.com/download/linux/teamviewer_amd64.deb" target="_blank" rel="noopener noreferrer">↓ <u>x86 64bit</u></a> <a href="https://download.teamviewer.com/download/linux/teamviewer_i386.deb" target="_blank" rel="noopener noreferrer">↓ <u>x86 32bit</u></a></p>
+</div>
+</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div></div>
+<div class="wpb_text_column wpb_content_element  wd-margin-bottom-zero">
+<div class="wpb_wrapper">
+<p><strong>Red Hat, CentOS, Fedora</strong></p>
+</div>
+</div>
+<div class="vc_row wpb_row vc_inner vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner"><div class="wpb_wrapper">
+<div class="wpb_text_column wpb_content_element ">
+<div class="wpb_wrapper">
+<p>*.rpm package 15.6.7<br>
+<a href="https://download.teamviewer.com/download/linux/teamviewer.x86_64.rpm" target="_blank" rel="noopener noreferrer">↓ <u>x86 64bit</u></a> <a href="https://download.teamviewer.com/download/linux/teamviewer.i686.rpm" target="_blank" rel="noopener noreferrer">↓ <u>x86 32bit</u></a></p>
+<p>(SUSE: <a href="https://download.teamviewer.com/download/linux/teamviewer-suse.x86_64.rpm" target="_blank" rel="noopener noreferrer">↓ <u>x86 64bit</u></a> <a href="https://download.teamviewer.com/download/linux/teamviewer-suse.i686.rpm" target="_blank" rel="noopener noreferrer">↓ <u>x86 32bit</u></a>)</p>
+</div>
+</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div></div>
+<div class="wpb_text_column wpb_content_element  wd-margin-bottom-zero">
+<div class="wpb_wrapper">
+<p><strong>Andre systemer (ikke offisielt støttet)</strong></p>
+</div>
+</div>
+<div class="vc_row wpb_row vc_inner vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner"><div class="wpb_wrapper">
+<div class="wpb_text_column wpb_content_element ">
+<div class="wpb_wrapper">
+<p>*.tar package 15.6.7<br>
+<a href="https://download.teamviewer.com/download/linux/teamviewer_amd64.tar.xz" target="_blank" rel="noopener noreferrer">↓ <u>x86 64bit</u></a> <a href="https://download.teamviewer.com/download/linux/teamviewer_i386.tar.xz" target="_blank" rel="noopener noreferrer">↓ <u>x86 32bit</u></a></p>
+</div>
+</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div></div><div class="templatera_shortcode"><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper"><span id="creative-link-wrap-7370" class="ult_main_cl ult-adjust-bottom-margin wd-link ">
+<span class="  ult_crlink">
+<a data-ultimate-target="#creative-link-wrap-7370 .ult_colorlink" data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}" href="https://www.teamviewer.com/en/privacy-policy/" title="Privacy Policy" class="ult_colorlink ult-responsive " style="float:left;font-weight:normal; " data-textcolor="#333333" data-texthover="#333333" data-style="">
+<span data-hover="Privacy Policy" style="color:#333333;;;" class="ult_btn10_span   ">Privacy Policy</span>
+</a>
+</span>
+</span></div></div></div></div></div>
+<div class="wpb_text_column wpb_content_element ">
+<div class="wpb_wrapper">
+<p><a href="https://community.teamviewer.com/t5/Knowledge-Base/How-to-install-TeamViewer-Host-for-Linux/ta-p/6318" target="_blank" rel="noopener noreferrer"><u>System requirements &amp; Installation notes</u></a><br>
+<a href="https://www.teamviewer.com/no/produkter/teamviewer/"><u>Lær mer om TeamViewer</u></a><br>
+<a href="https://community.teamviewer.com/t5/Change-Logs/ct-p/Change_Logs">Changelog</a></p>
+</div>
+</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner"><div class="wpb_wrapper">
+<div class="wpb_single_image wpb_content_element vc_align_left   wd-margin-bottom-zero">
+<figure class="wpb_wrapper vc_figure">
+<div class="vc_single_image-wrapper   vc_box_border_grey"><img src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/linux.png" class="vc_single_image-img attachment-full" alt="" width="630" height="363"></div>
+</figure>
+</div>
+</div></div></div></div><div data-vc-full-width="true" data-vc-full-width-init="true" class="vc_row wpb_row vc_row-fluid wd-row wd-row--secondary" style="position: relative; left: 15px; box-sizing: border-box; width: 917px; padding-left: 0px; padding-right: 0px;"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper">
+<div class="wpb_text_column wpb_content_element  wd-margin-bottom-zero">
+<div class="wpb_wrapper">
+<h2 style="text-align: center">Check out additional <strong>Team</strong>Viewer remote desktop support and collaboration downloads</h2>
+</div>
+</div>
+</div></div></div></div><div class="vc_row-full-width vc_clearfix"></div><div data-vc-full-width="true" data-vc-full-width-init="true" class="vc_row wpb_row vc_row-fluid wd-row wd-row--secondary wd-row--trimmed-top vc_column-gap-35" style="position: relative; left: 32px; box-sizing: border-box; width: 917px; padding-left: 0px; padding-right: 0px;"><div class="wd-jumbotron wpb_column vc_column_container vc_col-sm-8"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="vc_row wpb_row vc_inner vc_row-fluid vc_row-o-equal-height vc_row-o-content-middle vc_row-flex"><div class="wd-jumbotron wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper">
+<div class="wpb_text_column wpb_content_element ">
+<div class="wpb_wrapper">
+<p>Immediate assistance:</p>
+<h2>TeamViewer QuickSupport</h2>
+<p>Optimized for instant remote desktop support, this small customer 
+module does not require installation or administrator rights — simply 
+download, double click, and give the provided ID and password to your 
+supporter.</p>
+</div>
+</div>
+<div class="vc_btn3-container  wd-button wd-button--primary wd-margin-bottom-zero wd-button--mobile-fullwidth vc_btn3-left"><a class="vc_general vc_btn3 vc_btn3-size-md vc_btn3-shape-square vc_btn3-style-flat vc_btn3-color-grey" href="https://download.teamviewer.com/download/version_11x/teamviewer_qs.tar.gz" title="QuickSupport" target="_blank">Last ned QuickSupport</a></div><div class="templatera_shortcode"><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper"><span id="creative-link-wrap-2893" class="ult_main_cl ult-adjust-bottom-margin wd-link ">
+<span class="  ult_crlink">
+<a data-ultimate-target="#creative-link-wrap-2893 .ult_colorlink" data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}" href="https://www.teamviewer.com/en/privacy-policy/" title="Privacy Policy" class="ult_colorlink ult-responsive " style="float:left;font-weight:normal; " data-textcolor="#333333" data-texthover="#333333" data-style="">
+<span data-hover="Privacy Policy" style="color:#333333;;;" class="ult_btn10_span   ">Privacy Policy</span>
+</a>
+</span>
+</span></div></div></div></div></div>
+<div class="wpb_text_column wpb_content_element ">
+<div class="wpb_wrapper">
+<p><a href="https://www.teamviewer.com/en/download/custom-modules/"><u>Tilpass QuickSupport</u></a></p>
+</div>
+</div>
+</div></div></div></div><div class="vc_row wpb_row vc_inner vc_row-fluid"><div class="wd-margin-bottom-zero wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper">
+<div class="wpb_text_column wpb_content_element  wd-margin-bottom-zero">
+<div class="wpb_wrapper">
+<p>Immediate assistance:</p>
+<h2>TeamViewer Host</h2>
+<p>TeamViewer Host is used for 24/7 access to remote computers, which 
+makes it an ideal solution for uses such as remote monitoring, server 
+maintenance, or connecting to a PC or Mac in the office or at home. 
+Install TeamViewer Host on an unlimited number of computers and devices.
+ As a licensed user, you have access to them all!</p>
+</div>
+</div>
+</div></div></div></div>
+<div class="wpb_text_column wpb_content_element  wd-margin-bottom-zero">
+<div class="wpb_wrapper">
+<p><strong>Debian, Ubuntu, Raspbian</strong></p>
+</div>
+</div>
+<div class="vc_row wpb_row vc_inner vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner"><div class="wpb_wrapper">
+<div class="wpb_text_column wpb_content_element ">
+<div class="wpb_wrapper">
+<p>*.deb package 15.6.7<br>
+<a href="https://download.teamviewer.com/download/linux/teamviewer-host_amd64.deb" target="_blank" rel="noopener noreferrer">↓ <u>x86 64bit</u></a> <a href="https://download.teamviewer.com/download/linux/teamviewer-host_i386.deb" rel="noopener">↓ <u>x86 32bit</u></a> <a href="https://download.teamviewer.com/download/linux/teamviewer-host_armhf.deb" target="_blank" rel="noopener noreferrer">↓ <u>armv7 32bit</u></a></p>
+</div>
+</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div></div>
+<div class="wpb_text_column wpb_content_element  wd-margin-bottom-zero">
+<div class="wpb_wrapper">
+<p><strong>Red Hat, CentOS, Fedora</strong></p>
+</div>
+</div>
+<div class="vc_row wpb_row vc_inner vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner"><div class="wpb_wrapper">
+<div class="wpb_text_column wpb_content_element ">
+<div class="wpb_wrapper">
+<p>*.rpm package 15.6.7<br>
+<a href="https://download.teamviewer.com/download/linux/teamviewer-host.x86_64.rpm" target="_blank" rel="noopener noreferrer">↓ <u>x86 64bit</u></a> <a href="https://download.teamviewer.com/download/linux/teamviewer-host.i686.rpm" target="_blank" rel="noopener noreferrer">↓ <u>x86 32bit</u></a> <a href="https://download.teamviewer.com/download/linux/teamviewer-host.armv7hl.rpm" target="_blank" rel="noopener noreferrer">↓ <u>armv7 32bit</u></a></p>
+<p>(SUSE: <a href="https://download.teamviewer.com/download/linux/teamviewer-host-suse.x86_64.rpm" target="_blank" rel="noopener noreferrer">↓ <u>x86 64bit</u></a> <a href="https://download.teamviewer.com/download/linux/teamviewer-host-suse.i686.rpm" target="_blank" rel="noopener noreferrer">↓ <u>x86 32bit</u></a>)</p>
+</div>
+</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div></div>
+<div class="wpb_text_column wpb_content_element  wd-margin-bottom-zero">
+<div class="wpb_wrapper">
+<p><strong>Andre systemer (ikke offisielt støttet)</strong></p>
+</div>
+</div>
+<div class="vc_row wpb_row vc_inner vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner"><div class="wpb_wrapper">
+<div class="wpb_text_column wpb_content_element ">
+<div class="wpb_wrapper">
+<p>*.tar package 15.6.7<br>
+<a href="https://download.teamviewer.com/download/linux/teamviewer-host_amd64.tar.xz" target="_blank" rel="noopener noreferrer">↓ <u>x86 64bit</u></a> <a href="https://download.teamviewer.com/download/linux/teamviewer-host_i386.tar.xz" target="_blank" rel="noopener noreferrer">↓ <u>x86 32bit</u></a> <a href="https://download.teamviewer.com/download/linux/teamviewer-host_armhf.tar.xz" target="_blank" rel="noopener noreferrer">↓ <u>armv7 32bit</u></a></p>
+</div>
+</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner"><div class="wpb_wrapper"></div></div></div></div><div class="templatera_shortcode"><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper"><span id="creative-link-wrap-5715" class="ult_main_cl ult-adjust-bottom-margin wd-link ">
+<span class="  ult_crlink">
+<a data-ultimate-target="#creative-link-wrap-5715 .ult_colorlink" data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}" href="https://www.teamviewer.com/en/privacy-policy/" title="Privacy Policy" class="ult_colorlink ult-responsive " style="float:left;font-weight:normal; " data-textcolor="#333333" data-texthover="#333333" data-style="">
+<span data-hover="Privacy Policy" style="color:#333333;;;" class="ult_btn10_span   ">Privacy Policy</span>
+</a>
+</span>
+</span></div></div></div></div></div>
+<div class="wpb_text_column wpb_content_element ">
+<div class="wpb_wrapper">
+<p><a href="https://community.teamviewer.com/t5/Knowledge-Base/How-to-install-TeamViewer-Host-for-Linux/ta-p/6318" target="_blank" rel="noopener noreferrer"><u>Systemkrav &amp; Installasjonsmerknader</u></a></p>
+</div>
+</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-4"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="vc_row wpb_row vc_inner vc_row-fluid"><div class="wd-jumbotron wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper">
+<div class="wpb_single_image wpb_content_element vc_align_center   wd-margin-bottom-zero">
+<figure class="wpb_wrapper vc_figure">
+<div class="vc_single_image-wrapper   vc_box_border_grey"><img src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/linux-host-raspberry-pi.png" class="vc_single_image-img attachment-full" alt="" width="370" height="212"></div>
+</figure>
+</div>
+<div class="wpb_text_column wpb_content_element ">
+<div class="wpb_wrapper">
+<p>Your start into IoT:</p>
+<h2>TeamViewer Host for Raspberry Pi</h2>
+<p>The TeamViewer Host for Raspberry Pi is a system service that allows 
+for the unattended access of Raspberry Pi devices so that they can be 
+maintained, controlled, or managed with our industry-leading TeamViewer 
+solution, familiar to millions of users around the world.</p>
+</div>
+</div>
+<div class="vc_btn3-container  wd-button wd-button--primary wd-margin-bottom-zero wd-button--mobile-fullwidth vc_btn3-left"><a class="vc_general vc_btn3 vc_btn3-size-md vc_btn3-shape-square vc_btn3-style-flat vc_btn3-color-grey" href="https://download.teamviewer.com/download/linux/teamviewer-host_armhf.deb" title="Host" target="_blank">Last ned Host</a></div><div class="templatera_shortcode"><div class="vc_row wpb_row vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper"><span id="creative-link-wrap-9433" class="ult_main_cl ult-adjust-bottom-margin wd-link ">
+<span class="  ult_crlink">
+<a data-ultimate-target="#creative-link-wrap-9433 .ult_colorlink" data-responsive-json-new="{&quot;font-size&quot;:&quot;&quot;,&quot;line-height&quot;:&quot;&quot;}" href="https://www.teamviewer.com/en/privacy-policy/" title="Privacy Policy" class="ult_colorlink ult-responsive " style="float:left;font-weight:normal; " data-textcolor="#333333" data-texthover="#333333" data-style="">
+<span data-hover="Privacy Policy" style="color:#333333;;;" class="ult_btn10_span   ">Privacy Policy</span>
+</a>
+</span>
+</span></div></div></div></div></div></div></div></div></div><div class="vc_row wpb_row vc_inner vc_row-fluid"><div class="wd-jumbotron wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner"><div class="wpb_wrapper">
+<div class="wpb_text_column wpb_content_element ">
+<div class="wpb_wrapper">
+<h2>Previous versions:</h2>
+<p>These downloads are only recommended for users with older licenses that may not be used with the latest release of TeamViewer.</p>
+<p><a href="https://www.teamviewer.com/no/nedlasting/previous-versions/"><u>See previous versions</u></a><br>
+<a href="https://community.teamviewer.com/t5/Knowledge-Base/Which-operating-systems-are-supported/ta-p/24141" target="_blank" rel="noopener noreferrer"><u>Supported operating systems</u></a></p>
+</div>
+</div>
+</div></div></div></div></div></div></div></div><div class="vc_row-full-width vc_clearfix"></div>
+</div>
+</article>
+</main>
+</div>
+<div class="wd-row wd-row--info-dark-one-color wd-narrow-bar wd-newsletter-bar">
+<div class="wd-narrow-bar__wrapper">
+<span class="wd-narrow-bar__text"><b>Vil du ha mer?</b></span>
+<span class="wd-narrow-bar__text">Eksklusive tilbud og siste nytt: vårt nyhetsbrev!</span>
+<div class="wd-button-newsletter__wrapper">
+<span class="wd-button wd-button--highlight wd-button--highlight__larger">
+<a href="https://www.teamviewer.com/en/newsletter/" title="Abonner på nyhetsbrev">Registrer deg</a>
+</span>
+</div>
+</div>
+</div>
+<div class="wd-multi-column-footer">
+<aside id="wd-js-footer-sidebar" class="widget-area wd-footer-sidebar">
+<section id="nav_menu-10" class="widget widget_nav_menu wd-footer-menu"><h3 class="widget-title">Om TeamViewer</h3><div class="menu-footer_menu_4-norwegian-bokmal-2-container"><ul id="menu-footer_menu_4-norwegian-bokmal-2" class="menu"><li id="menu-item-224906" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-224906"><a href="https://ir.teamviewer.com/websites/teamviewer/English/1/investor-relations.html">Investorer</a></li>
+<li id="menu-item-187697" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-187697"><a href="https://www.teamviewer.com/no/company/">Om TeamViewer</a></li>
+<li id="menu-item-183805" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-183805"><a target="_blank" rel="noopener noreferrer" href="https://channelpartner.teamviewer.com/">Channel Partners</a></li>
+<li id="menu-item-183806" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-183806"><a target="_blank" rel="noopener noreferrer" href="https://jobs.teamviewer.com/">Karriere</a></li>
+<li id="menu-item-183849" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-183849"><a href="https://www.teamviewer.com/en/press/">Presse</a></li>
+<li id="menu-item-183850" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-183850"><a href="https://www.teamviewer.com/no/support/contact/">Kontakt</a></li>
+</ul></div></section><section id="nav_menu-11" class="widget widget_nav_menu wd-footer-menu"><h3 class="widget-title">Produkter</h3><div class="menu-footer_menu_1-norwegian-bokmal-2-container"><ul id="menu-footer_menu_1-norwegian-bokmal-2" class="menu"><li id="menu-item-183412" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-183412"><a href="https://www.teamviewer.com/no/produkter/teamviewer/">TeamViewer</a></li>
+<li id="menu-item-183465" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-183465"><a href="https://www.teamviewer.com/no/losninger/utvidet-virkelighet/">TeamViewer Pilot</a></li>
+<li id="menu-item-233767" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-233767"><a href="https://www.teamviewer.com/en/iot/">TeamViewer IoT</a></li>
+<li id="menu-item-183518" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-183518"><a href="https://www.teamviewer.com/no/remote-management/">Remote Management</a></li>
+<li id="menu-item-231999" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-231999"><a href="https://www.teamviewer.com/en/solutions/support-ticket-system/">TeamViewer Servicecamp</a></li>
+<li id="menu-item-183548" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-183548"><a target="_blank" rel="noopener noreferrer" href="https://www.blizz.com/no/">Blizz</a></li>
+</ul></div></section><section id="nav_menu-12" class="widget widget_nav_menu wd-footer-menu"><h3 class="widget-title">Populære emner</h3><div class="menu-footer_menu_2-norwegian-bokmal-2-container"><ul id="menu-footer_menu_2-norwegian-bokmal-2" class="menu"><li id="menu-item-183586" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-183586"><a target="_blank" rel="noopener noreferrer" href="https://login.teamviewer.com/">Management Console</a></li>
+<li id="menu-item-183587" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-183587"><a href="https://www.teamviewer.com/no/losninger/stotte-for-mobile-enheter/">Mobil støtte</a></li>
+<li id="menu-item-192959" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-192959"><a href="https://www.teamviewer.com/en/trust-center/">Trust Center</a></li>
+<li id="menu-item-183629" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-183629"><a href="https://community.teamviewer.com/">Fellesskap</a></li>
+<li id="menu-item-189211" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-189211"><a href="https://www.teamviewer.com/en/gdpr">GDPR</a></li>
+<li id="menu-item-199446" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-199446"><a href="https://www.teamviewer.com/product-descriptions/">Produktbeskrivelse</a></li>
+</ul></div></section><section id="nav_menu-13" class="widget widget_nav_menu wd-footer-menu"><h3 class="widget-title">Løsninger</h3><div class="menu-footer_menu_3-norwegian-bokmal-2-container"><ul id="menu-footer_menu_3-norwegian-bokmal-2" class="menu"><li id="menu-item-183667" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-183667"><a href="https://www.teamviewer.com/no/losninger/ekstern-stotte/">Ekstern støtte</a></li>
+<li id="menu-item-183668" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-183668"><a href="https://www.teamviewer.com/no/losninger/ekstern-tilgang/">Ekstern tilgang</a></li>
+<li id="menu-item-183669" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-183669"><a href="https://www.teamviewer.com/no/losninger/eksternt-skrivebord/">Eksternt skrivebord</a></li>
+<li id="menu-item-183759" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-183759"><a href="https://www.teamviewer.com/no/losninger/samarbeid/">Samarbeid</a></li>
+<li id="menu-item-183760" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-183760"><a href="https://www.teamviewer.com/no/losninger/stotte-for-mobile-enheter/">Støtte for mobile enheter</a></li>
+</ul></div></section> </aside>
+</div>
+</div>
+<a id="back_to_top_button" title="Go to top"></a>
+<footer class="wd-site-footer">
+<div class="wd-bottom-footer-area">
+<nav id="footer-navigation" class="footer-navigation">
+<ul id="menu-bottom-footer-tv-norwegian-bokmal" class="wd-tv-footer-menu"><li class="menu-item wd-language-switcher"><a class="wd-modal-link" href="#wd-geo-preference" rel="modal:open">Norsk bokmål | NO</a></li><li id="menu-item-189307" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-189307"><a href="https://www.teamviewer.com/en/address/">Imprint</a></li>
+<li id="menu-item-183384" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-183384"><a href="https://www.teamviewer.com/no/support/contact/">Kontakt</a></li>
+<li id="menu-item-189309" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-189309"><a href="https://www.teamviewer.com/en/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-189311" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-189311"><a href="https://www.teamviewer.com/en/eula/">EULA</a></li>
+<li id="show-cookie-settings-footer" class="wd-tv-footer-menu__hidden">
+<span class="wd-button wd-button--highlight-inverted__intensive">
+<a id="ot-sdk-btn" class="ot-sdk-show-settings">Cookie Settings</a>
+</span>
+</li>
+</ul> </nav>
+</div>
+<div class="wd-tv-footer-social">
+<span>
+Følg oss på: </span>
+<ul class="wd-social-items">
+<li>
+<a href="https://www.facebook.com/teamviewer/" target="_blank" rel="noopener">
+<svg xmlns="http://www.w3.org/2000/svg" width="6.958" height="14.977" viewBox="0 0 6.958 14.977"><title>Facebook Icon</title>
+<g id="facebook" transform="translate(0 0)">
+<path id="Path_52" data-name="Path 52" d="M394.005,221.428v7.241a.189.189,0,0,0,.189.189h2.689a.189.189,0,0,0,.189-.189V221.31h1.95a.188.188,0,0,0,.188-.173l.188-2.217a.189.189,0,0,0-.188-.2h-2.137v-1.573a.668.668,0,0,1,.668-.668h1.5a.189.189,0,0,0,.189-.189V214.07a.189.189,0,0,0-.189-.189H396.7a2.7,2.7,0,0,0-2.7,2.7v2.137h-1.344a.189.189,0,0,0-.189.189v2.217a.188.188,0,0,0,.189.189h1.344Z" transform="translate(-392.472 -213.881)" fill="#038ff4" fill-rule="evenodd"></path>
+</g>
+</svg>
+</a>
+</li>
+ <li>
+<a href="https://twitter.com/teamviewer" target="_blank" rel="noopener">
+<svg xmlns="http://www.w3.org/2000/svg" width="14.562" height="11.994" viewBox="0 0 14.562 11.994"><title>Twitter Icon</title>
+<g id="twitter" transform="translate(0 0)">
+<g id="Group_29" data-name="Group 29" transform="translate(0 0)">
+<path id="Path_47" data-name="Path 47" d="M317.065,218.576a5.968,5.968,0,0,1-1.471.42c.237-.04.586-.469.726-.642a2.71,2.71,0,0,0,.49-.892c.013-.026.022-.058,0-.077a.083.083,0,0,0-.078.006,7.5,7.5,0,0,1-1.747.669.116.116,0,0,1-.12-.032,1.414,1.414,0,0,0-.153-.156,3.092,3.092,0,0,0-.846-.519,2.947,2.947,0,0,0-1.3-.209,3.1,3.1,0,0,0-1.231.348,3.172,3.172,0,0,0-.993.812,3.054,3.054,0,0,0-.594,1.188,3.217,3.217,0,0,0-.031,1.255c.009.07,0,.08-.06.07a9.331,9.331,0,0,1-6-3.056c-.07-.08-.108-.08-.166.006a3.045,3.045,0,0,0,.519,3.6c.118.111.238.223.369.325a3.05,3.05,0,0,1-1.159-.325c-.07-.044-.105-.019-.111.06a1.814,1.814,0,0,0,.019.344,3.079,3.079,0,0,0,1.9,2.454,1.781,1.781,0,0,0,.385.118,3.431,3.431,0,0,1-1.136.035c-.083-.016-.114.026-.083.105a3.2,3.2,0,0,0,2.388,2c.108.019.217.019.325.044-.007.01-.013.01-.019.019a3.788,3.788,0,0,1-1.631.864,5.841,5.841,0,0,1-2.476.317c-.133-.02-.161-.018-.2,0s0,.054.038.089c.169.112.341.211.515.306a8.194,8.194,0,0,0,1.655.662,8.818,8.818,0,0,0,8.559-2,8.983,8.983,0,0,0,2.368-6.552c0-.094.111-.146.178-.2a5.768,5.768,0,0,0,1.159-1.212.353.353,0,0,0,.072-.232v-.013C317.12,218.538,317.125,218.55,317.065,218.576Z" transform="translate(-302.559 -217.139)" fill="#038ff4"></path>
+</g>
+<g id="Group_30" data-name="Group 30" transform="translate(4.324 11.942)">
+<path id="Path_48" data-name="Path 48" d="M312.006,243.228Z" transform="translate(-312.006 -243.228)" fill="#038ff4" fill-rule="evenodd"></path>
+</g>
+<g id="Group_31" data-name="Group 31" transform="translate(4.213 11.942)">
+<path id="Path_49" data-name="Path 49" d="M311.874,243.228c-.019,0-.24,0,0,0Z" transform="translate(-311.763 -243.228)" fill="#038ff4" fill-rule="evenodd"></path>
+</g>
+<g id="Group_32" data-name="Group 32" transform="translate(4.815 11.944)">
+<path id="Path_50" data-name="Path 50" d="M313.077,243.243c0-.024.258,0,0,0C313.077,243.23,313.109,243.243,313.077,243.243Z" transform="translate(-313.077 -243.232)" fill="#038ff4" fill-rule="evenodd"></path>
+</g>
+<g id="Group_33" data-name="Group 33" transform="translate(9.905 0.018)">
+<path id="Path_51" data-name="Path 51" d="M324.257,217.177a.051.051,0,0,1-.06,0Z" transform="translate(-324.197 -217.177)" fill="#038ff4" fill-rule="evenodd"></path>
+</g>
+</g>
+</svg>
+</a>
+</li>
+<li>
+<a href="https://www.youtube.com/user/TeamViewer" target="_blank" rel="noopener">
+<svg xmlns="http://www.w3.org/2000/svg" width="14.738" height="10.317" viewBox="0 0 14.738 10.317"><title>Youtube Icon</title>
+<g id="youtube" transform="translate(0 0)"><g id="Group_36" data-name="Group 36" transform="translate(0 0)"><path id="Path_53" data-name="Path 53" d="M480.889,158.071a3.208,3.208,0,0,0-3.208-3.208h-8.321a3.208,3.208,0,0,0-3.208,3.208v3.9a3.208,3.208,0,0,0,3.208,3.208h8.321a3.208,3.208,0,0,0,3.208-3.208Zm-5.25,2.146-3.319,1.82c-.144.078-.274-.026-.274-.19v-3.736c0-.166.134-.27.278-.188l3.342,1.916A.218.218,0,0,1,475.639,160.218Z" transform="translate(-466.151 -154.863)" fill="#038ff4"></path></g></g></svg>
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/company/teamviewer/" target="_blank" rel="noopener">
+<svg xmlns="http://www.w3.org/2000/svg" width="13.175" height="12.583" viewBox="0 0 13.175 12.583"><title>Linkedin Icon</title>
+<g id="linkedin" transform="translate(0 0)">
+<g id="Group_40" data-name="Group 40" transform="translate(0.184 3.9)">
+<g id="Group_39" data-name="Group 39">
+<path id="Path_57" data-name="Path 57" d="M400.116,292.892v4.657a.208.208,0,0,1-.208.208h-2.4a.208.208,0,0,1-.209-.208v-4.331c0-1.14-.407-1.918-1.429-1.918a1.542,1.542,0,0,0-1.446,1.031,1.922,1.922,0,0,0-.093.688v4.53a.209.209,0,0,1-.209.208h-2.4a.208.208,0,0,1-.208-.208c.006-1.154.03-6.749.005-8.065a.207.207,0,0,1,.208-.211h2.4a.209.209,0,0,1,.208.209v.994c-.005.01-.014.019-.019.028h.019v-.028a2.8,2.8,0,0,1,2.542-1.4c1.856,0,3.247,1.213,3.247,3.818Zm-12.782,4.865h2.4a.208.208,0,0,0,.208-.208v-8.067a.209.209,0,0,0-.208-.209h-2.4a.208.208,0,0,0-.208.209v8.067A.208.208,0,0,0,387.334,297.757Z" transform="translate(-387.126 -289.074)" fill="#038ff4"></path>
+</g>
+</g>
+<g id="Group_41" data-name="Group 41" transform="translate(0 0)">
+<ellipse id="Ellipse_11" data-name="Ellipse 11" cx="1.51" cy="1.51" rx="1.51" ry="1.51" fill="#038ff4"></ellipse>
+</g>
+</g>
+</svg>
+</a>
+</li>
+<li>
+<a href="https://www.instagram.com/teamviewer_official/" target="_blank" rel="noopener">
+<svg xmlns="http://www.w3.org/2000/svg" width="15.623" height="15.623" viewBox="0 0 15.623 15.623"><title>Instagram Icon</title>
+<g id="instagram" transform="translate(0 0)">
+<path id="Path_54" data-name="Path 54" d="M476.022,213.461h-6.211a4.706,4.706,0,0,0-4.706,4.706v6.211a4.706,4.706,0,0,0,4.706,4.706h6.211a4.706,4.706,0,0,0,4.706-4.706v-6.211A4.706,4.706,0,0,0,476.022,213.461Zm3.232,10.917a3.232,3.232,0,0,1-3.232,3.232h-6.211a3.232,3.232,0,0,1-3.232-3.232v-6.211a3.232,3.232,0,0,1,3.232-3.232h6.211a3.232,3.232,0,0,1,3.232,3.232Z" transform="translate(-465.106 -213.461)" fill="#038ff4"></path>
+<path id="Path_55" data-name="Path 55" d="M490.06,219.744a.918.918,0,1,0,.919.919A.919.919,0,0,0,490.06,219.744Z" transform="translate(-478.14 -216.868)" fill="#038ff4"></path>
+<path id="Path_56" data-name="Path 56" d="M477.658,222.317a3.858,3.858,0,1,0,3.857,3.858A3.863,3.863,0,0,0,477.658,222.317Zm0,6.329a2.471,2.471,0,1,1,2.471-2.471A2.474,2.474,0,0,1,477.658,228.646Z" transform="translate(-469.82 -218.263)" fill="#038ff4"></path>
+</g>
+</svg>
+</a>
+</li>
+</ul>
+</div>
+</footer>
+<div id="wd-geo-preference" class="modal">
+<h3>Velg dine innstillinger</h3>
+<form class="wd-geo-preference-form" name="geo-preference-form" onsubmit="return tv_setGeoPreference(event, 'NO')">
+<label class="wd-geo-preference-form__label" for="wd-js-language-selector">Foretrukket språk</label>
+<div class="wd-geo-preference-form__select-wrapper">
+<select id="wd-js-language-selector" name="language-selector" class="wd-geo-preference-form__select">
+<option value="cs===https://www.teamviewer.com/cs/stahnout/linux/">Čeština</option><option value="da===https://www.teamviewer.com/da/download/linux/">Dansk</option><option value="en===https://www.teamviewer.com/en/download/linux/">English</option><option value="es===https://www.teamviewer.com/es/descarga/linux/">Español</option><option value="es-mx===https://www.teamviewer.com/es-mx/descarga/linux/">Spanish-MX</option><option value="en-us===https://www.teamviewer.com/en-us/download/linux/">English-US</option><option value="fi===https://www.teamviewer.com/fi/lataa/linux/">Suomi</option><option value="fr===https://www.teamviewer.com/fr/telecharger/linux/">Français</option><option value="fr-ca===https://www.teamviewer.com/fr-ca/telecharger/linux/">French-CA</option><option value="de===https://www.teamviewer.com/de/download/linux/">Deutsch</option><option value="hu===https://www.teamviewer.com/hu/letoltes/linux/">Magyar</option><option value="it===https://www.teamviewer.com/it/download/linux/">Italiano</option><option value="ja===https://www.teamviewer.com/ja/download/linux/">日本語</option><option value="ko===https://www.teamviewer.com/ko/download/linux/">한국어</option><option value="nl===https://www.teamviewer.com/nl/download/linux/">Nederlands</option><option selected="selected" value="no===https://www.teamviewer.com/no/nedlasting/linux/">Norsk bokmål</option><option value="pl===https://www.teamviewer.com/pl/do-pobrania/linux/">Polski</option><option value="pt-br===https://www.teamviewer.com/pt-br/download/linux/">Português</option><option value="ru===https://www.teamviewer.com/ru/%d1%81%d0%ba%d0%b0%d1%87%d0%b0%d1%82%d1%8c/linux/">Русский</option><option value="sv===https://www.teamviewer.com/sv/ladda-ner/linux/">Svenska</option><option value="th===https://www.teamviewer.com/th/%e0%b8%94%e0%b8%b2%e0%b8%a7%e0%b8%99%e0%b9%8c%e0%b9%82%e0%b8%ab%e0%b8%a5%e0%b8%94/linux/">ไทย</option><option value="tr===https://www.teamviewer.com/tr/yukleme/linux/">Türkçe</option><option value="vi===https://www.teamviewer.com/vi/ta%cc%89i-ve/linux/">Tiếng Việt</option><option value="cn===https://www.teamviewer.cn/cn/download/linux/">Chinese Simplified</option><option value="tw===https://www.teamviewer.com/tw/download/linux/">Chinese Traditional</option>
+</select>
+</div>
+<button type="submit" class="wd-geo-preference-form__button">Lagre</button>
+</form>
+</div>
+<script type="text/html" id="wpb-modifications"></script><link rel="stylesheet" id="ult-background-style-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/background-style.css" type="text/css" media="all">
+<link rel="stylesheet" id="templatera_inline-css" href="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/front_style.css" type="text/css" media="all">
+<script type="text/javascript" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/global.js"></script>
+<script type="text/javascript" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/tvdefault.js"></script>
+<script type="text/javascript" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/info-box.js"></script>
+<script type="text/javascript" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/wp-embed.js"></script>
+<script type="text/javascript" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/js_composer_front.js"></script>
+<script type="text/javascript" src="TeamViewer%20Linux-nedlasting%20for%20ekstern%20skrivebordstilgang%20og%20samarbeid_files/ultimate_bg.js"></script>
+</div>
+
+
+</body></html>
